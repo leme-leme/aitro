@@ -2,30 +2,38 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-	--color-navy-50: #f0f4f8;
-	--color-navy-100: #d9e2ec;
-	--color-navy-200: #bcccdc;
-	--color-navy-300: #9fb3c8;
-	--color-navy-400: #829ab1;
-	--color-navy-500: #627d98;
-	--color-navy-600: #486581;
-	--color-navy-700: #334e68;
-	--color-navy-800: #243b53;
-	--color-navy-900: #102a43;
-	--color-navy-950: #0a1929;
-	--color-health-50: #e6f7f0;
-	--color-health-100: #b3e8d0;
-	--color-health-200: #80d9b0;
-	--color-health-300: #4dca90;
-	--color-health-400: #26be78;
-	--color-health-500: #00b260;
-	--color-health-600: #009e54;
-	--color-health-700: #008645;
-	--color-health-800: #006e37;
-	--color-health-900: #004a25;
+	--color-surface: #f1f1fe;
+	--color-surface-warm: #f6f6f3;
+	--color-ink-900: #1a1a2e;
+	--color-ink-800: #2d2d44;
+	--color-ink-700: #3d3d5c;
+	--color-ink-600: #555573;
+	--color-ink-500: #6e6e8a;
+	--color-ink-400: #8888a0;
+	--color-ink-300: #a5a5ba;
+	--color-ink-200: #c4c4d4;
+	--color-ink-100: #e0e0ec;
+	--color-ink-50: #f0f0f8;
+	--color-accent: #104ede;
+	--color-accent-dark: #0d3db3;
+	--color-accent-light: #3a6fe8;
 	--font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 html {
 	scroll-behavior: smooth;
+}
+
+/* Logo carousel animation */
+@keyframes scroll-left {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(-50%); }
+}
+
+.animate-scroll-left {
+	animation: scroll-left 25s linear infinite;
+}
+
+.animate-scroll-left:hover {
+	animation-play-state: paused;
 }
