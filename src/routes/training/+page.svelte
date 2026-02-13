@@ -1,4 +1,5 @@
 <script>
-	import TrainingPage from '$lib/components/TrainingPage.svelte';
+	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
+	onMount(() => goto('/diensten#training', { replaceState: true }));
 </script>
-<TrainingPage lang="nl" />
