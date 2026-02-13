@@ -1,0 +1,34 @@
+media:
+  input: static/media
+  output: static/media
+
+content:
+  - name: pages-nl
+    label: "Pages (NL)"
+    path: content/nl
+    type: collection
+    fields:
+      - name: title
+        label: Titel
+        type: string
+      - name: description
+        label: Beschrijving
+        type: text
+      - name: body
+        label: Inhoud
+        type: rich-text
+
+  - name: pages-en
+    label: "Pages (EN)"
+    path: content/en
+    type: collection
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: description
+        label: Description
+        type: text
+      - name: body
+        label: Content
+        type: rich-text
