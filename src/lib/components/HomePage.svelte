@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { t, localePath, type Lang } from '$lib/i18n.js';
 	import LogoCarousel from './LogoCarousel.svelte';
+	import ParallaxImage from './ParallaxImage.svelte';
 
 	let { lang }: { lang: Lang } = $props();
 	let tr = $derived(t(lang));
@@ -79,7 +80,6 @@
 		{#each services as phase, i}
 			{@const s = tr.services[phase.key]}
 			<div class="border-t border-ink-200/50 py-12 sm:py-16 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-start">
-				<!-- Text -->
 				<div>
 					<h3 class="text-3xl sm:text-4xl font-medium text-ink-900 mb-4">{s.name}</h3>
 					<p class="text-ink-500 text-xl sm:text-2xl mb-8 max-w-xl leading-relaxed">{s.desc}</p>
@@ -90,18 +90,8 @@
 						{/each}
 					</div>
 				</div>
-				<!-- Parallax image -->
-				<div class="relative w-full md:w-[340px] h-[300px] sm:h-[360px] rounded-lg overflow-hidden">
-					<div class="absolute inset-0 bg-ink-900 rounded-lg"></div>
-					<div class="absolute inset-0 bg-surface rounded-lg"
-						style="clip-path: polygon({i % 2 === 0 ? '0 0, 100% 15%, 100% 100%, 0 85%' : '0 15%, 100% 0, 100% 85%, 0 100%'});"
-					></div>
-					<img
-						src={phase.img}
-						alt={s.name}
-						class="absolute inset-0 w-full h-full object-cover rounded-lg parallax-img"
-						style="transform: translateY(0px);"
-					/>
+				<div class="w-full md:w-[340px] h-[300px] sm:h-[360px]">
+					<ParallaxImage src={phase.img} alt={s.name} />
 				</div>
 			</div>
 		{/each}
@@ -113,24 +103,3 @@
 		</div>
 	</div>
 </section>
-
-<style>
-	.parallax-img {
-		will-change: transform;
-	}
-	@media (prefers-reduced-motion: no-preference) {
-		.parallax-img {
-			transition: transform 0.1s linear;
-		}
-	}
-</style>
-
-<svelte:window on:scroll={() => {
-	if (typeof window === 'undefined') return;
-	const imgs = document.querySelectorAll('.parallax-img');
-	imgs.forEach((img) => {
-		const rect = img.getBoundingClientRect();
-		const offset = (rect.top - window.innerHeight / 2) * 0.08;
-		(img as HTMLElement).style.transform = `translateY(${offset}px)`;
-	});
-}} />
