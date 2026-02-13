@@ -12,6 +12,7 @@
 	let switchPath = $derived(switchLangPath(page.url.pathname, otherLang));
 
 	let mobileOpen = $state(false);
+	const hasCases = false; // flip to true when case studies are published
 </script>
 
 <div class="min-h-screen flex flex-col bg-white text-ink-900">
@@ -26,7 +27,7 @@
 				<li><a href="{prefix}/aanpak" class="text-ink-600 hover:text-ink-900 transition-colors">{lang === 'en' ? 'Approach' : 'Aanpak'}</a></li>
 				<li><a href="{prefix}/diensten" class="text-ink-600 hover:text-ink-900 transition-colors">{lang === 'en' ? 'Services' : 'Diensten'}</a></li>
 				<li><a href="{prefix}/training" class="text-ink-600 hover:text-ink-900 transition-colors">Training</a></li>
-				<li><a href="{prefix}/cases" class="text-ink-600 hover:text-ink-900 transition-colors">Cases</a></li>
+				{#if hasCases}<li><a href="{prefix}/cases" class="text-ink-600 hover:text-ink-900 transition-colors">Cases</a></li>{/if}
 				<li><a href="{prefix}/contact" class="text-ink-600 hover:text-ink-900 transition-colors">Contact</a></li>
 				<li>
 					<a href={switchPath} class="text-xs uppercase tracking-wider px-2 py-1 border border-ink-200 rounded hover:bg-ink-50 transition-colors">
@@ -54,7 +55,7 @@
 					<li><a href="{prefix}/aanpak" onclick={() => mobileOpen = false} class="block py-1 text-ink-600">{lang === 'en' ? 'Approach' : 'Aanpak'}</a></li>
 					<li><a href="{prefix}/diensten" onclick={() => mobileOpen = false} class="block py-1 text-ink-600">{lang === 'en' ? 'Services' : 'Diensten'}</a></li>
 					<li><a href="{prefix}/training" onclick={() => mobileOpen = false} class="block py-1 text-ink-600">Training</a></li>
-					<li><a href="{prefix}/cases" onclick={() => mobileOpen = false} class="block py-1 text-ink-600">Cases</a></li>
+					{#if hasCases}<li><a href="{prefix}/cases" onclick={() => mobileOpen = false} class="block py-1 text-ink-600">Cases</a></li>{/if}
 					<li><a href="{prefix}/contact" onclick={() => mobileOpen = false} class="block py-1 text-ink-600">Contact</a></li>
 					<li><a href={switchPath} class="inline-block text-xs uppercase tracking-wider px-2 py-1 border border-ink-200 rounded">{otherLang.toUpperCase()}</a></li>
 				</ul>
